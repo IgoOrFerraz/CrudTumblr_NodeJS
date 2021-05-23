@@ -1,0 +1,61 @@
+<!-- Vertical navbar -->
+<div class="menuVertical bg-dark active" id="sidebar">
+
+    <!-- Menu Base, retirado no site https://bootstrapious.com/p/bootstrap-vertical-navbar -->
+    <!-- Ver a respeito do Menu de Cadastro -->
+
+    <!--
+    <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+        <h4 class="m-0">Jason Doe</h4>
+        <p class="font-weight-light text-muted mb-0">Web developer</p>
+        </div>
+    </div>
+    </div>
+    -->
+
+    <div style="margin-top: 50px;">
+        <img src="/imges/logo.png" width="200px" height="40px">
+    </div>
+
+
+    <ul class="nav flex-column menuListaItens" style="margin-top: 50px;">
+
+        <li class="nav-item menuItem">
+            <a id="btn_inicio" href="/dashboards/panel" class="nav-link"><i class="fa fa-th-large fa-fw"></i>Início</a>
+        </li>
+
+        <li class="nav-item menuItem">
+            <a id="btn_redesSociais" href="/dashboards/publicacoes" class="nav-link"><i class="fa fa-plus" aria-hidden="true"></i>Inserir Publicação</a>
+        </li>
+  
+        <li class="nav-item menuItem">
+            <a id="btn_redesSociais" href="/dashboards/redesSociais" class="nav-link"><i class="fa fa-share-square" aria-hidden="true"></i>Redes Sociais</a>
+        </li>
+
+        <li class="nav-item menuItem">
+            <a id="btn_sobreNos" href="/dashboards/sobreNos" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i>Sobre Nós</a>
+        </li>
+
+        <li class="nav-item menuItem">
+            <a id="btn_sobreNos" href="/dashboards/panelControl" class="nav-link"><i class="fas fa-gamepad"></i>Painel de Controle</a>
+        </li>
+
+    </ul>
+
+    <div class="py-4 px-3 mb-4">
+        <input type="button" class="btn btn-primary btn-block" value="Deslogar" onclick="window.location.href='/deslogar'">
+    </div>
+
+</div>
+<!-- End vertical navbar -->
+        
+<!-- Page content holder -->
+<div class="page-content p-5 active" id="content">
+
+        <!-- Toggle button -->
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4" style="margin-top:10px">
+        <i class="fa fa-bars mr-2"></i>
+        <small class="text-uppercase font-weight-bold">Menu</small>
+    </button>

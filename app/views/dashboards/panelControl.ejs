@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Painel de Controle</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
+        <!-- Favicon -->
+        <link rel="icon" href="/imges/favicon.png">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+      
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/dashboard/main.js"></script>
+        
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/dashboard/style.css">
+
+        <style>
+            span{
+                margin: 20px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <% include ../layout/menu.ejs %>
+
+        <div class="container bg-dark" id="conteudo">
+
+            <table class="table">
+                <thead class="text-white">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Contador</th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaPublicacoes">
+                    <% for(let i=0; i<dados.length; i++){ %>
+                        <tr class="text-white">
+                            <td><%=dados[i].titulo%></td>
+                            <td><%=dados[i].data%></td>
+                            <td><%=dados[i].hora%></td>
+                        
+                        <% let segundos_restantes = dados[i].dataTime %>
+
+                            <td><span class="tempo_restante" id="<%=dados[i].id_pub%>_<%=dados[i].id_user%>"><%=segundos_restantes%></span> Segundos</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function(){
+            setTimeout('cronometro()',)
+        })
+        function cronometro(){
+			$('.tempo_restante').each(function(){
+				let segundos = $(this).html()
+                let segundos_atuais = parseInt(segundos) - 1
+                
+                if(segundos_atuais < 1 && segundos_atuais > -1){
+                    $.ajax({
+                        url: "/dashboards/panelControl/register/",
+                        data: {data: $(this).attr('id')},
+                        type: "POST",
+                        success: function(result){
+                            $.ajax({
+                                url: "/dashboards/panelControl/register/public",
+                                data: {data: result},
+                                type: "POST",
+                                success: function(result){
+                                    setTimeout(function(){
+                                        window.location.href = '/dashboards/panel'
+                                    }, 2000)
+                                },
+                                error: function(err){
+                                    throw err
+                                }
+                            });
+                        }
+                    });
+				}
+				$(this).html(segundos_atuais)
+			})
+			timerID = setTimeout('cronometro()', 1000)
+		}
+    </script>
+</html>

@@ -1,0 +1,71 @@
+:root{
+    --first : #E8F1F2;
+    --second : #E7DFDD;
+    --third : #A239CA;
+    --fourth : #392582;
+}
+
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    /*background-image: url('../imges/fundo.png');*/
+    color: var(--fourth);
+    background-color: var(--fourth);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+    text-align: center;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--first), rgba(0, 0, 0, 0));
+}
+
+/* Style Elements Input */
+
+textarea{
+    outline: none;
+    resize: none;
+    color: var(--third);
+    border-color: var(--third);
+}
+
+input[type=text], input[type=password]{
+    border-color: var(--third);
+    color: var(--third);
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    border-color: var(--third);
+    color: var(--third);
+    box-shadow: none;
+}
+
+input[type=text]::placeholder, input[type=password]::placeholder{
+    color: var(--third);
+}
+
+.btn-primary{
+    background-color: var(--third);
+    border-color: var(--first);
+    color: var(--first);
+}
+.btn-outline-primary{
+    background-color: var(--second);
+    border-color: var(--third);
+    color: var(--third);
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus{
+    background-color: var(--second);
+    border-color: var(--third);
+    color: var(--third);
+}
+.btn-outline-primary:hover, .btn-primary:active, .btn-outline-primary:focus{
+    background-color: var(--third);
+    border-color: var(--first);
+    color: var(--first);
+}

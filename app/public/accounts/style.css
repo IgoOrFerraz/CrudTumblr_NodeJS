@@ -1,0 +1,39 @@
+footer{
+    width: 100%;
+    height: 200px;
+
+    background-image: url(../imges/logo.png);
+    background-size: 350px 70px;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+
+    /* LogoPNG 970px 195px */
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--first), rgba(0, 0, 0, 0));
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+
+    max-width: 500px;
+    min-width: 200px;
+}
+
+.campo input{
+    margin-top: 10px;
+}
+
+.formulario{
+    margin-top: 10%;
+    border-radius: 7px;
+    padding: 20px;
+    background-color: var(--second);
+}

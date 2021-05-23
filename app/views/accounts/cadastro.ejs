@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Cadastro</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
+        <!-- Favicon -->
+        <link rel="icon" href="imges/favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+      
+        <!-- CSS -->
+        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="accounts/style.css">
+    </head>
+    <body>
+        <section class="campo container">
+            <div class="formulario form-group">
+
+                <form action="/cadastro/cadastrar" method="POST">
+                    <span><h2>CADASTRO</h2></span>
+                    <hr>
+                    <input type="text" class="form-control" name="nome" placeholder="Digite seu Nome" pattern="[A-z\s]+$" title="Apenas Letras" required>
+                    <input type="text" class="form-control" name="email" placeholder="Digite seu E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Favor Preencha o Email Corretamente" required>
+                    <input type="password" class="form-control" name="senha" placeholder="Digite uma Senha" required>
+                    
+                    <hr>
+                    <input type="submit" class="btn btn-primary btn-block" value="Cadastrar">
+                    <input type="button" class="btn btn-outline-primary btn-block" value="Voltar" onclick="window.location.href='/'">
+                </form>
+            </div>
+        </section> 
+        <footer class="fixed-bottom"></footer>
+    </body>
+</html>

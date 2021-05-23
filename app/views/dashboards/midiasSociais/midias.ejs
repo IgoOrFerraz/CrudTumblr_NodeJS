@@ -1,0 +1,38 @@
+<div class="row midias">
+    <% if(statusTumblr == "connected"){ %>
+        <div class="midia">
+            <img src="/imges/tumblr.png">
+            <h3>Conectado</h3>
+            <input type="button" onclick="DeslogarTumblr()" class="btn btn-primary btn-block" value="Deslogar">
+        </div>  
+    <% } %>
+        
+    <% if(statusTumblr == "disconnected"){ %>
+        <div class="midia">
+            <img src="/imges/tumblr.png">
+            <h3>Desconectado</h3>
+            <input type="button" onclick="ConectarTumblr()" class="btn btn-primary btn-block" value="Conectar">
+        </div>
+    <% } %>
+    
+    <div class="midia">
+        <img src="/imges/instagram.png">
+        <h3>Não Funcional</h3>
+        <input type="button" class="btn btn-primary btn-block" value="Conectar">
+    </div>
+    
+    <div class="midia">
+        <img src="/imges/linkedin.png">
+        <h3>Não Funcional</h3>
+        <input type="button" class="btn btn-primary btn-block" value="Conectar" onclick="window.location.href='/dashboards/redesSociais/deslogarFacebook'">
+    </div>    
+</div>
+
+<script>
+    function DeslogarTumblr(){
+        window.location.href = 'midiasSociais/midias/DeslogarTumblr';
+    }
+    function ConectarTumblr(){
+        window.location.href = 'midiasSociais/midias/ConectarTumblr';
+    }
+</script>

@@ -1,0 +1,97 @@
+.menuVertical {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 2px 5px black;
+    transition: all 0.4s;
+}
+
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+
+#sidebar.active {
+    margin-left: -17rem;
+}
+
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+    
+#sidebar {
+    margin-left: -17rem;
+}
+
+#sidebar.active {
+    margin-left: 0;
+}
+#content {
+    width: 100%;
+    margin: 0;
+}
+#content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+}
+
+
+
+/* Menu Itens */
+.menuItem a{
+    text-align: left;
+    color: var(--first);
+}
+
+.menuItem a:hover, .menuItem a:active, .menuItem a:focus{
+    color: var(--third);
+    background-color: var(--second);
+}
+
+.menuItem i{
+    margin-right: 10px;
+}
+
+
+/* Conteudo */
+
+#conteudo{
+    color: white;
+    
+    border-radius: 10px;
+    box-shadow: 3px 2px 5px black;
+
+    padding: 10px;
+
+    min-width: 320px;
+    min-height: 300px;
+}
+
+#conteudo input, #conteudo textarea{
+    margin-bottom: 10px;
+}
+
+.midias{
+
+    display: flex;
+    justify-content: space-evenly;
+
+    align-items: center;
+    margin: 20px 20px;
+
+    min-width: 300px;
+}
+
+.midia{
+    margin: 5px 5px;
+}
+
+.midia img{
+    max-width: 250px;
+    max-height: 250px;
+}

@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>Panel</title>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        
+        <!-- Favicon -->
+        <link rel="icon" href="/imges/favicon.png">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+      
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/dashboard/main.js"></script>
+        
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/dashboard/style.css">
+
+        <style>
+            span{
+                margin: 20px 10px;
+            }
+        </style>
+    </head>
+    <script>
+        function visualizar(id){
+            alert("visualizando o id: "+id)
+            console.log(id);
+        }
+        $(document).ready(()=>{
+            $('#mesFiltro').change(()=>{
+                $.ajax({
+                    url: "/dashboards/panel/filter",
+                    data: {filter: $('#mesFiltro').val()},
+                    //dataType: "jsonp",
+                    //jsonpCallback: 'callback',
+                    type: "POST",
+                    success: function(result){
+
+                        if(!result){
+                            $('#listaPublicacoes').html('')
+                            alert("Sem Registros nesse Período")
+                        }
+                        else{
+                            result = JSON.parse(result)
+                            let posts = Array()
+                            result.forEach(function(value){
+
+                                console.log("id - "+value.id);
+                            
+                            let teste = `
+                                <tr class='text-white'>
+                                    <td>${value.id}</td>
+                                    <td>${value.date}</td>
+                                    <td>${value.time}</td>
+                                    <td>${value.title}</td>
+                                    <td>${value.state}</td>
+                                    <td><input type='button' class='btn btn-primary btn-sm btn-block' value='Visualizar' onclick='window.location.href = "/dashboards/register/${value.id}" '></td>
+                                </tr>`
+                                posts.push(teste)
+                            })
+
+                            //console.log(result);
+                            $('#listaPublicacoes').html(posts)
+                        }
+                    },
+                    error: function(err){
+                        $('#listaPublicacoes').html(err)
+                    }
+                });
+            })
+        })
+    </script>
+    <body>
+        <% if(msg.length > 0){%>
+            <% if(msg == "A"){ %>
+                <div class="alert alert-success fixed-top" style="position:absolute; width:100%; z-index:1"><strong>Publicação efetuada com Sucesso</strong></div>
+            <% } else if(msg == "B"){ %>
+                <div class="alert alert-success fixed-top" style="position:absolute; width:100%; z-index:1"><strong>Publicação Deletada com Sucesso</strong></div>
+            <% } else if(msg == "C"){ %>
+                <div class="alert alert-success fixed-top" style="position:absolute; width:100%; z-index:1"><strong>Publicação Editada com Sucesso</strong></div>
+            <% } %>
+        <% } %>
+        
+        <% include ../layout/menu.ejs %>
+
+        <div class="container bg-dark" id="conteudo">
+            
+            <div class="col-lg-12 form-group">
+                
+                <select class="form-control" style="margin-top: 20px; margin-bottom: 20px;" name="mes" id="mesFiltro">
+                    <option disabled selected>Filtro</option>
+                    <option value="estemes">Este Mês</option>
+                    <option value="mespassado">Mes Passado</option>
+                </select>
+            </div>
+
+            <table class="table">
+                <thead class="text-white">
+                    <tr>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Titulo</th>
+                    <th>Status</th>
+                    <th></th>
+                    </tr>
+                </thead>
+
+                <tbody id="listaPublicacoes">
+                    <% for(let i=0; i<dados.length; i++){ %>
+                        <tr class="text-white">
+                            <td><%=dados[i].id%></td>
+                            <td><%=dados[i].date%></td>
+                            <td><%=dados[i].time%></td>
+                            <td><%=dados[i].title%></td>
+                            <td><%=dados[i].state%></td>
+                            <td><input type="button" class="btn btn-primary btn-sm btn-block" value="Visualizar" onclick='window.location.href = "/dashboards/register/<%=dados[i].id%>" '></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
